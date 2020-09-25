@@ -60,12 +60,12 @@ const io = require('socket.io')(server)
 
 //connect to server
 io.on('connection', socket =>{
-    socket.on('join-room', (roomID, userId) =>{
-        
+    socket.on('join-room', (roomID) =>{
+        console.log("joined room");
         
         if(users[roomID]){
             const length = users[roomID].length;
-            
+            // if(users[roomID].id === socket.id && userId == null) return;
             if(length > 1){
                 return;
             }
@@ -79,13 +79,14 @@ io.on('connection', socket =>{
         }
         const user = {
             id: socket.id,
-            class: users[roomID].some(user => user.class === 'x') ? 'circle': 'x'
+            class: users[roomID].some(usr => usr.class === 'x') ? 'circle': 'x'
         }
         users[roomID].push(user) 
         socket.join(roomID);
 
         socket.emit("your id", user);
-        socket.to(roomID).broadcast.emit('user-connected', userId);
+        
+        console.log(users[roomID]);
         io.sockets.to(roomID).emit('allUsers', users[roomID]);
 
         socketToRoom[socket.id] = roomID;
@@ -93,6 +94,9 @@ io.on('connection', socket =>{
          
     })
 
+    socket.on('start-call', (roomID, userId) =>{
+        socket.to(roomID).broadcast.emit('user-connected', userId);
+    })
     // if(Object.keys(users).length >1){
     //     // socket.emit('full', 'room is full');
     // }
@@ -179,7 +183,6 @@ io.on('connection', socket =>{
 
     console.log("trying to get react app");
     app.get('*', (req, res) =>{
-        console.log("got a request");
         res.sendFile(path.join(__dirname, 'client/build/index.html'));
     })
 // }

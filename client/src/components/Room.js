@@ -34,10 +34,10 @@ function Room(props) {
 
 
   useEffect(() => {
-    socketRef.current = io.connect('/');
-    
+    socketRef.current = io.connect('http://localhost:3001');
+    socketRef.current.emit('join-room', roomID);
     myPeer.on('open', id =>{
-      socketRef.current.emit('join-room', roomID, id);
+      socketRef.current.emit('start-call', roomID, id);
   });
 
     navigator.mediaDevices.getUserMedia({
