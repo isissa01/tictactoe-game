@@ -1,0 +1,27 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    background-color: var(--background-color) ;
+    color: white;
+    padding: 40px;
+}
+.home_title{
+    text-transform: uppercase;
+    padding: 10px;
+    margin: 10px;
+}
+
+.home_title h1{
+    font-size: 3rem;
+    margin: 0;
+}
+.home_title h2{
+    font-size: 1.5rem;
+    margin: 0;
+}

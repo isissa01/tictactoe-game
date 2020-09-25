@@ -1,0 +1,214 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Raleway', sans-serif !important;
+      
+  }
+  body{
+    margin: 0;
+  }
+  :root{
+    --cell-size: 100px;
+    --mark-size : calc(var(--cell-size) * 0.9);
+
+    --background-color : #202C39;
+    --main-color: #FF521B;
+  
+  }
+  
+  .board{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+    padding: 10px;
+  }
+  
+  
+  
+  .cell{
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  
+  .cell::before, .cell::after{
+    content: '';
+  
+  }
+  
+  .cell:first-child, .cell:nth-child(2),.cell:nth-child(3){
+    border-top: none;
+  }
+  
+  .cell:last-child, .cell:nth-child(7),.cell:nth-child(8){
+    border-bottom: none;
+  }
+  .cell:nth-child(3n + 1){
+    border-left: none;
+  }
+  .cell:nth-child(3n + 3){
+    border-right: none;
+  }
+  
+  
+  
+  .cell.x::before, .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::before,
+  .board.x .cell:not(.x):not(.circle):hover::after{
+    content: '';
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    background-color: black;
+    position: absolute;
+  }
+  .cell.x::before,
+  .board.x .cell:not(.x):not(.circle):hover::before{
+    transform: rotate(45deg);
+  }
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::after{
+    transform: rotate(-45deg);
+  }
+  
+  
+  
+  .cell.circle::before, .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::before,
+  .board.circle .cell:not(.x):not(.circle):hover::after{
+    content: '';
+    
+    position: absolute;
+    border-radius: 50%;
+  }
+  .cell.circle::before,
+  .board.circle .cell:not(.x):not(.circle):hover::before{
+    background-color: black;
+  
+    width: var(--mark-size);
+    height: var(--mark-size);
+  }
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after{
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color: white;;
+  }
+  
+  .board.x .cell:not(.x):not(.circle):hover::before,
+  .board.x .cell:not(.x):not(.circle):hover::after,
+  .board.circle .cell:not(.x):not(.circle):hover::before{
+    background-color: gray;
+  }
+  
+  .cell.x, .cell.circle{
+    cursor:not-allowed;
+  }
+  
+  .winning_message{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.9);
+    font-size: 5rem;
+    color: white;
+    text-transform: capitalize;
+  }
+  
+  button{
+    padding: .25em .5em;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 1px solid white;
+    background-color: var(--main-color);
+    color: white;
+    outline: none !important;
+
+  }
+  
+  button:hover{
+    background-color: black;
+    color: white;
+    border-color: white;
+  }
+
+  button:disabled{
+      background-color: gray;
+  }
+  
+  .show{
+    display: flex;
+  }
+  
+  .video_grid{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  
+  }
+  
+  .video_grid video{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    padding: 10px;
+  }
+  
+  .partner_video{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .startGame, .turn-text{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    
+    
+  }
+  .turn-text{
+      z-index: -1;
+  }
+
+  .startGame{
+      align-items: center;
+      flex-direction: column;
+      background-color: rgba(0,0,0,0.9);
+      bottom: 0;
+  }
+
+  .startGame .wait_message{
+      color: white;
+
+  }
+  
+  .hide{
+    display: none;
+  }
+  
+  
