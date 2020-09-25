@@ -89,7 +89,7 @@ io.on('connection', socket =>{
         io.sockets.to(roomID).emit('allUsers', users[roomID]);
 
         socketToRoom[socket.id] = roomID;
-        console.log('users: ', users);
+        // console.log('users: ', users);
          
     })
 
@@ -117,7 +117,7 @@ io.on('connection', socket =>{
         //message is sent to everyone for display
         console.log(gameBoard[roomID])
         if(gameBoard[roomID][index].class === 'a'){
-            console.log(console.log(gameBoard[roomID][index].class))
+            // console.log(console.log(gameBoard[roomID][index].class))
             gameBoard[roomID][index] = {class: current} ;
     }
         // console.log(gameBoard)
@@ -133,7 +133,7 @@ io.on('connection', socket =>{
     })
 
     socket.on('set-turn', (circleTurn, roomID) =>{
-        console.log(circleTurn)
+        // console.log(circleTurn)
        io.to(roomID).emit('change-turns', !circleTurn);
 
 
