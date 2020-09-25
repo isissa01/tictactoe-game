@@ -7,7 +7,6 @@ const myPeer = new Peer(undefined, {
   // host: '/',
   // port: '3001'
 });
-cos
 
 // const myPeer
 
