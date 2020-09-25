@@ -7,6 +7,7 @@ const myPeer = new Peer(undefined, {
   // host: '/',
   // port: '3001'
 });
+cos
 
 // const myPeer
 
@@ -30,10 +31,11 @@ function Room(props) {
   const CIRCLE_CLASS = 'circle';
   const peers = {};
   const roomID = props.match.params.roomID;
+  const port = process.env.port || 3001;
 
 
   useEffect(() => {
-    socketRef.current = io.connect('/');
+    socketRef.current = io.connect(`http://localhost:${port}`);
     
     myPeer.on('open', id =>{
       socketRef.current.emit('join-room', roomID, id);
