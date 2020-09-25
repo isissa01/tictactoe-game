@@ -179,6 +179,7 @@ io.on('connection', socket =>{
 
     console.log("trying to get react app");
     app.get('*', (req, res) =>{
+        console.log("got a request");
         res.sendFile(path.join(__dirname, 'client/build/index.html'));
     })
 // }
