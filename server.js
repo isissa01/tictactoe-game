@@ -115,7 +115,7 @@ io.on('connection', socket =>{
     //when syou send a message you 
     socket.on('mark-cell', (index, current, roomID) =>{
         //message is sent to everyone for display
-        console.log(gameBoard[roomID])
+        // console.log(gameBoard[roomID])
         if(gameBoard[roomID][index].class === 'a'){
             // console.log(console.log(gameBoard[roomID][index].class))
             gameBoard[roomID][index] = {class: current} ;
