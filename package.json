@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "devStart": "nodemon server.js",
     "start": "PROD=true node server.js",
-    "postinstall": "cd ./client && npm"
+    "postinstall": "cd ./client && npm install"
   },
   "keywords": [],
   "author": "",
