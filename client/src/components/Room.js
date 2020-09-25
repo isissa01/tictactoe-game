@@ -225,8 +225,8 @@ function connectToNewUser(userId, stream){
       </div>
 
       <div ref={videoGrid} className="video_grid">
-          <video ref={userVideo} muted playsInline autoPlay className="myVideo"></video>
-          <video ref={partnerVideo} playsInline autoPlay className="partner_video"></video>
+          <video ref={userVideo} muted playsinline autoPlay className="myVideo"></video>
+          <video ref={partnerVideo} playsinline autoPlay className="partner_video"></video>
 
 
       </div>
