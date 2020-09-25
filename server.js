@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 const http = require('http')
-const { v4: uuidV4} = require('uuid');
 const path = require('path');
 let users = {};
 const socketToRoom = {};
