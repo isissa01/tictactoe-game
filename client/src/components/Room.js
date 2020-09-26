@@ -38,6 +38,7 @@ function Room(props) {
     socketRef.current.emit('join-room', roomID);
     myPeer.on('open', id =>{
       socketRef.current.emit('start-call', roomID, id);
+      console.log('id');
   });
 
     navigator.mediaDevices.getUserMedia({
@@ -224,9 +225,9 @@ function connectToNewUser(userId, stream){
         <button id="restartButton" onClick={startGame}>Restart</button>
       </div>
 
-      <div ref={videoGrid} className="video_grid">
-          <video ref={userVideo} muted playsinline autoPlay className="myVideo"></video>
-          <video ref={partnerVideo} playsinline autoPlay className="partner_video"></video>
+      <div ref={videoGrid} className="video_grid" hidden={!userId}>
+          <video ref={userVideo} muted playsInline autoPlay className="myVideo"></video>
+          <video ref={partnerVideo} playsInline autoPlay className="partner_video"></video>
 
 
       </div>
