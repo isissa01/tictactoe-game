@@ -41,6 +41,8 @@ function Room(props) {
       console.log('id');
   });
 
+   if(userId)  {
+     
     navigator.mediaDevices.getUserMedia({
       video: true,
       audio: true
@@ -66,6 +68,9 @@ function Room(props) {
 
       
     })
+
+   }
+   
 
   }, [])
 
